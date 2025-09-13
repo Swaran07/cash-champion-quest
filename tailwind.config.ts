@@ -27,6 +27,14 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -80,10 +88,63 @@ export default {
             height: "0",
           },
         },
+        "gaming-pulse": {
+          "0%, 100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+          "50%": {
+            opacity: "0.8",
+            transform: "scale(1.02)",
+          },
+        },
+        "neon-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 5px hsl(142 69% 58% / 0.5)",
+          },
+          "50%": {
+            boxShadow: "0 0 20px hsl(142 69% 58% / 0.8), 0 0 30px hsl(142 69% 58% / 0.6)",
+          },
+        },
+        "achievement-bounce": {
+          "0%, 20%, 53%, 80%, 100%": {
+            transform: "translate3d(0,0,0)",
+          },
+          "40%, 43%": {
+            transform: "translate3d(0, -10px, 0)",
+          },
+          "70%": {
+            transform: "translate3d(0, -5px, 0)",
+          },
+          "90%": {
+            transform: "translate3d(0, -2px, 0)",
+          },
+        },
+        "progress-fill": {
+          "0%": {
+            width: "0%",
+          },
+          "100%": {
+            width: "100%",
+          },
+        },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-5px)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "gaming-pulse": "gaming-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "neon-glow": "neon-glow 2s ease-in-out infinite",
+        "achievement-bounce": "achievement-bounce 1s ease-in-out",
+        "progress-fill": "progress-fill 2s ease-out",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },

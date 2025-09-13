@@ -2,41 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Financial Gaming UI Design System - Dark theme with neon accents and gaming elements */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Gaming Dark Theme */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 225 25% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 225 25% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Neon Gaming Colors */
+    --primary: 142 69% 58%; /* Neon Green */
+    --primary-foreground: 222 47% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 266 85% 58%; /* Neon Purple */
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --warning: 45 93% 58%;
+    --warning-foreground: 222 47% 6%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 192 91% 36%; /* Neon Cyan */
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 142 69% 58%;
 
-    --radius: 0.5rem;
+    /* Gaming Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 69% 58%), hsl(192 91% 36%));
+    --gradient-secondary: linear-gradient(135deg, hsl(266 85% 58%), hsl(314 100% 76%));
+    --gradient-gaming: linear-gradient(135deg, hsl(222 47% 6%), hsl(225 25% 8%));
+    --gradient-achievement: linear-gradient(135deg, hsl(45 93% 58%), hsl(35 91% 65%));
+    
+    /* Gaming Shadows */
+    --shadow-neon: 0 0 20px hsl(142 69% 58% / 0.5);
+    --shadow-purple: 0 0 20px hsl(266 85% 58% / 0.5);
+    --shadow-cyan: 0 0 20px hsl(192 91% 36% / 0.5);
+    --shadow-gaming: 0 4px 20px hsl(0 0% 0% / 0.3);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,6 +112,48 @@ All colors MUST be HSL.
   }
 }
 
+/* Gaming Animations & Effects */
+@layer components {
+  .gaming-glow {
+    @apply shadow-[var(--shadow-neon)] transition-all duration-300;
+  }
+  
+  .gaming-glow:hover {
+    @apply scale-105 shadow-[var(--shadow-neon)];
+  }
+  
+  .achievement-pulse {
+    @apply animate-pulse bg-gradient-to-r from-warning to-accent;
+  }
+  
+  .neon-border {
+    @apply border border-primary shadow-[var(--shadow-neon)];
+  }
+  
+  .gaming-card {
+    @apply bg-gradient-to-br from-card to-muted border border-border/50 rounded-lg;
+    box-shadow: var(--shadow-gaming);
+  }
+  
+  .progress-bar {
+    @apply h-2 bg-muted rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary to-accent transition-all duration-500 ease-out;
+  }
+  
+  .streak-counter {
+    @apply bg-gradient-to-r from-warning to-accent text-warning-foreground px-3 py-1 rounded-full text-sm font-bold;
+    box-shadow: var(--shadow-cyan);
+  }
+  
+  .level-badge {
+    @apply bg-gradient-to-r from-secondary to-primary text-secondary-foreground px-4 py-2 rounded-full font-bold;
+    box-shadow: var(--shadow-purple);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -101,5 +161,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 20% 50%, hsl(142 69% 58% / 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, hsl(266 85% 58% / 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 40% 80%, hsl(192 91% 36% / 0.05) 0%, transparent 50%);
   }
 }
